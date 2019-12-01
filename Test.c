@@ -5,17 +5,21 @@
 #include <avr/io.h>
 #include <util/delay.h>
 
+#define LED 5
+#define LSHIFT(x) (1 << x) //Shift bits left by x
+
 int main(void)
 {
-  DDRB = 0xFF; //Nakes PORTC as Output
 
-  while(1) //infinite loop
+  DDRB = 0b00100000; //Set PB5 pin to out
+
+  PORTB |= LSHIFT(LED); // Turn on the LED
+
+  while(1) 
   {
-    PORTB = 0xFF; //Turns ON All LEDs
-    _delay_ms(500); //1 second delay
 
-    PORTB = 0x00; //Turns OFF All LEDs
-    _delay_ms(100); //1 second delay
+    PORTB ^= LSHIFT(LED); //Toggle the LED switch
+    _delay_ms(1000); 
   }
 
 }
