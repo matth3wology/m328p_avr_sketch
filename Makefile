@@ -3,8 +3,8 @@ PROGRAMMER=usbasp
 PART=m328p
 CFLAGS=-Wall -g -Os -mmcu=atmega328p
 TARGET=Test
-INCLUDE=/Users/whiterabbit/avr8-gnu-toolchain-darwin_x86_64/avr/include
-LIBRARY=/Users/whiterabbit/avr8-gnu-toolchain-darwin_x86_64/avr/lib
+INCLUDE=C:/WinAVR-20100110/avr/include
+LIBRARY=C:/WinAVR-20100110/avr/lib
 
 
 all:
@@ -14,5 +14,7 @@ all:
 flash:
 	${CC} -c${PROGRAMMER} -p${PART} -Uflash:w:${TARGET}.hex:i
 
+.PHONY: clean
+
 clean:
-	rm *.hex *.bin
+	del *.bin *.hex

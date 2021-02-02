@@ -4,7 +4,7 @@
             "name": "Mac",
             "includePath": [
                 "${workspaceFolder}/**",
-                "/Users/whiterabbit/avr8-gnu-toolchain-darwin_x86_64/avr/include"
+                "C:\\WinAVR-20100110\\avr\\include"
             ],
             "defines": [],
             "macFrameworkPath": [],
