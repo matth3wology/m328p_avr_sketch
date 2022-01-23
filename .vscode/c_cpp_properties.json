@@ -4,11 +4,11 @@
             "name": "Mac",
             "includePath": [
                 "${workspaceFolder}/**",
-                "C:\\WinAVR-20100110\\avr\\include"
+                "C:/WinAVR-20100110/avr/include"
             ],
             "defines": [],
             "macFrameworkPath": [],
-            "compilerPath": "/Users/whiterabbit/opt/GNAT/2019/bin/gcc",
+            "compilerPath": "C:/WinAVR-20100110/bin",
             "cStandard": "c11",
             "cppStandard": "c++17",
             "intelliSenseMode": "clang-x64"
