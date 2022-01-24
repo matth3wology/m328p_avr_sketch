@@ -2,7 +2,7 @@ CC=avrdude
 PROGRAMMER=usbasp
 PART=m328p
 CFLAGS=-Wall -g -Os -mmcu=atmega328p
-TARGET=gpio_read
+TARGET=pwm
 INCLUDE=C:/WinAVR-20100110/avr/include
 LIBRARY=C:/WinAVR-20100110/avr/lib
 
