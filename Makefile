@@ -2,10 +2,9 @@ CC=avrdude
 PROGRAMMER=usbasp
 PART=m328p
 CFLAGS=-Wall -g -Os -mmcu=atmega328p
-TARGET=pwm
-INCLUDE=C:/WinAVR-20100110/avr/include
-LIBRARY=C:/WinAVR-20100110/avr/lib
-
+TARGET=gpio_toggle
+INCLUDE=C:/avr8-gnu-toolchain-win32_x86_64/avr/include
+LIBRARY=C:/avr8-gnu-toolchain-win32_x86_64/avr/lib
 
 all:
 	avr-gcc $(CFLAGS) -o $(TARGET).bin $(TARGET).c -I$(INCLUDE) -L$(LIBRARY)
