@@ -10,8 +10,8 @@
 
 // Define the servo pulse width for 0 and 180 degrees
 // TODO: Need to fix the timing here
-#define SERVO_MIN_PULSE_WIDTH 430  // Minimum pulse width in µs
-#define SERVO_MAX_PULSE_WIDTH 2600 // Maximum pulse width in µs
+#define SERVO_MIN_PULSE_WIDTH 900  // 2e6 * 0.5 ms
+#define SERVO_MAX_PULSE_WIDTH 5000 // 2e6 * 2.5 ms
 
 // Function to initialize Timer1 for PWM
 void servo_init() {
@@ -26,35 +26,29 @@ void servo_init() {
 
   // Set TOP value for 50 Hz (20 ms period)
   ICR1 = 39999; // (16 MHz / (8 * 50)) - 1
-
-  // Set initial duty cycle to 0 degrees
-  OCR1A = (SERVO_MIN_PULSE_WIDTH * 2);
 }
 
 // Function to set the servo angle
 void servo_set_angle(uint16_t angle) {
   // Calculate the pulse width based on the angle
-  uint16_t pulse_width =
-      SERVO_MIN_PULSE_WIDTH +
-      ((SERVO_MAX_PULSE_WIDTH - SERVO_MIN_PULSE_WIDTH) * angle) / 180;
+  uint16_t pulse_width = SERVO_MIN_PULSE_WIDTH +
+                         (uint16_t)((angle / 180.0) * (SERVO_MAX_PULSE_WIDTH -
+                                                       SERVO_MIN_PULSE_WIDTH));
 
   // Set the pulse width (OCR1A value)
-  OCR1A = pulse_width * 2; // Scale to timer ticks
+  OCR1A = pulse_width; // Scale to timer ticks
 }
 
 int main() {
   // Initialize the servo
   servo_init();
 
-  // Enable global interrupts
   sei();
 
   while (1) {
-    // Move servo to 0 degrees
     servo_set_angle(0);
     _delay_ms(1000);
 
-    // Move servo to 180 degrees
     servo_set_angle(180);
     _delay_ms(1000);
   }

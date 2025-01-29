@@ -19,6 +19,6 @@ int main(void) {
   while (1) {
 
     PORTB ^= LSHIFT(LED); // Toggle the LED switch
-    _delay_ms(3000);
+    _delay_ms(500);
   }
 }

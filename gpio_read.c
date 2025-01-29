@@ -23,5 +23,6 @@ int main(void) {
     } else {
       PORTB &= ~(LSHIFT(LED)); // Turn the LED off
     }
+    _delay_ms(5000);
   }
 }
